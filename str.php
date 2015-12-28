@@ -22,7 +22,7 @@ if(!strstr($urlget, 'http://'))
 
 
 function shorturl($long_url){
-	$apiKey='3213676317';//要修改这里的key再测试哦
+	$apiKey='3738750665';//要修改这里的key再测试哦
 	$apiUrl='http://api.t.sina.com.cn/short_url/shorten.json?source='.$apiKey.'&url_long='.$long_url;
 	$response = file_get_contents($apiUrl);
 	$json = json_decode($response);
@@ -30,7 +30,7 @@ function shorturl($long_url){
 }
 
 function expandurl($short_url){
-	$apiKey='3213676317';//要修改这里的key再测试哦
+	$apiKey='3738750665';//要修改这里的key再测试哦
 	$apiUrl='http://api.t.sina.com.cn/short_url/expand.json?source='.$apiKey.'&url_short='.$short_url;
 
 	$response = file_get_contents($apiUrl);
