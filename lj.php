@@ -15,8 +15,6 @@ $b=base64_decode($b);
 
 $decodecount=$b[2];
 
-echo '<br>'.$decodecount.' '.$b;
-
 $decode='          ';
 
 for($x=0;$x<$decodecount;$x++){
