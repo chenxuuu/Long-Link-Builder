@@ -10,16 +10,21 @@ if($b=='')
 }
 else
 {
-	
-$in=base64_decode(base64_decode(base64_decode(base64_decode(base64_decode(base64_decode(base64_decode(base64_decode(base64_decode($b)))))))));
 
-if(!strstr($in, 'http://'))
-{
-	echo '<SCRIPT language=JavaScript>alert("¡¥Ω”∏Ò Ω¥ÌŒÛ£°\nThe format of link is error!")</SCRIPT>';
-	echo '<meta http-equiv="refresh" content="0.1;url=index.html">';
-	return 0;
+$b=base64_decode($b);
+
+$decodecount=$b[2];
+
+echo '<br>'.$decodecount.' '.$b;
+
+$decode='          ';
+
+for($x=0;$x<$decodecount;$x++){
+	$decode[$x]=$b[$x*4+4];
 }
 
-header("Location:$in");
+$decode='http://t.cn/'.$decode;
+
+header("Location:$decode");
 }
 ?>

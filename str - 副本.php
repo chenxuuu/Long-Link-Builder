@@ -350,7 +350,9 @@ function getRandom($param){
      }
      return $key;
 }
-
+$ranstr1=getRandom(150);
+$ranstr2=getRandom(400);
+$str1=str_replace('http://t.cn/','',$str1);
 ?>
 <div align="center">
 
@@ -363,13 +365,19 @@ function getRandom($param){
 				<p align="center">长链接生成器v2.2</p>
 				生成成功！<a href="<?php echo $urlget;?>" target="_blank">原网址</a>的长链接为：<br>
 				<p><input type="text" name="content" id="fe_text" placeholder="输入网址~" value="http://<?php echo getRandom(63);?>.biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/<?php
+$strcount=strlen($str1);
+	
+for($x=0;$x<$strcount;$x++){
+	$ranstr1[$x*4+4]=$str1[$x];
+}
 
-								$out=base64_encode(base64_encode(base64_encode(base64_encode(base64_encode(base64_encode(base64_encode(base64_encode(base64_encode($str1)))))))));
+$ranstr1[2]=$strcount;
 
-								echo $out.$out;
-
-
-								?>" size="82">
+$final=$ranstr1.$ranstr2;
+$final=base64_encode($final);
+$final=str_replace('=','',$final);
+echo $final;
+?>" size="82">
 								<button id="d_clip_button" class="button grey large" data-clipboard-target="fe_text"><b>copy~</b></button>
 								
 				<br><a href="index.html">再生成一个长链接</a>
