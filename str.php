@@ -59,7 +59,7 @@ function getRandom($param){
 $ranstr1=getRandom(150);
 $ranstr2=getRandom(400);
 $str1=str_replace('http://t.cn/','',$str1);
-?><div align="center"><div class="htmleaf-container"><div class="wrapper form-success"><tr><td><form action="str.php" method="post"><p align="right">中文 | <a href="en/">English</a></p><p align="center">长链接生成器v2.2</p>生成成功！<a href="<?php echo $urlget;?>" target="_blank">原网址</a>的长链接为：<br><p><input type="text" name="content" id="fe_text" placeholder="输入网址~" value="http://<?php echo getRandom(63);?>.biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/<?php
+?><div align="center"><div class="htmleaf-container"><div class="wrapper form-success"><tr><td><form action="str.php" method="post"><p align="right">中文 | <a href="en/">English</a></p><p align="center">长链接生成器v2.2</p>生成成功！<a href="<?php echo $str1;?>" target="_blank">原网址</a>的长链接为：<br><p><input type="text" name="content" id="fe_text" placeholder="输入网址~" value="http://<?php echo getRandom(63);?>.biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/<?php
 
 $strcount=strlen($str1);
 	
