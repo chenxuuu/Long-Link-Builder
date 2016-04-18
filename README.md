@@ -36,9 +36,9 @@ output:http://8pgj43g2qksrjaa4vehf5l7gsmg7uktg7pjg8d2kw6su5nhvkfmsblu4kct6t5i.bi
 
 
 
-![pic](http://i4.tietuku.com/f9359ab482ca6745.jpg)
+![pic](http://i4.tietuku.cn/f9359ab482ca6745.jpg)
 
-![pic](http://i4.tietuku.com/5e2383243bd78222.jpg)
+![pic](http://i4.tietuku.cn/5e2383243bd78222.jpg)
 
 
 如果找到bug欢迎pull我~
