@@ -21,6 +21,32 @@ if(!strstr($urlget, 'http://'))
 }
 
 
+function  curl_post_302($url)
+{
+    $ch = curl_init();
+    curl_setopt($ch,  CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_URL,  $url);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch,  CURLOPT_FOLLOWLOCATION, 1); // 302 redirect
+    curl_setopt($ch,  CURLOPT_POSTFIELDS, "233");
+    $data = curl_exec($ch);
+    $Headers =  curl_getinfo($ch);
+    curl_close($ch);
+    if ($data != $Headers)
+    return  $Headers["url"];
+    else
+    return $url;
+}
+
+$safe_check = file_get_contents("http://cgi.urlsec.qq.com/index.php?m=check&a=check&url=".curl_post_302($urlget));
+
+if(strstr($safe_check, "\u60a8\u8981\u8bbf\u95ee\u7684\u7f51\u7ad9\u88ab\u5927\u91cf\u7528\u6237\u4e3e\u62a5"))
+{
+    echo '<SCRIPT language=JavaScript>alert("请填写安全的网址！")</SCRIPT>';
+	echo '<meta http-equiv="refresh" content="0.1;url=index.html">';
+	return 0;
+}
+
 function shorturl($long_url){
 	$apiKey='3738750665';//要修改这里的key再测试哦
 	$apiUrl='http://api.t.sina.com.cn/short_url/shorten.json?source='.$apiKey.'&url_long='.$long_url;
@@ -37,7 +63,13 @@ function expandurl($short_url){
 	$json = json_decode($response);
 	return $json[0]->url_long;
 }
-$str1=shorturl($urlget);
+if(strstr($urlget, 'http://t.cn/'))
+{
+    $str1=$urlget;
+}else
+{
+    $str1=shorturl($urlget);
+}
 
 if($str1=='')
 {
@@ -57,9 +89,9 @@ function getRandom($param){
 }
 
 $ranstr1=getRandom(150);
-$ranstr2=getRandom(400);
+$ranstr2=getRandom(800);
 $str1=str_replace('http://t.cn/','',$str1);
-?><div align="center"><div class="htmleaf-container"><div class="wrapper form-success"><tr><td><form action="str.php" method="post"><p align="right">中文 | <a href="en/">English</a></p><p align="center">长链接生成器v2.2</p>生成成功！<a href="<?php echo $str1;?>" target="_blank">原网址</a>的长链接为：<br><p><input type="text" name="content" id="fe_text" placeholder="输入网址~" value="http://<?php echo getRandom(63);?>.biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/<?php
+?><div align="center"><div class="htmleaf-container"><div class="wrapper form-success"><tr><td><form action="str.php" method="post"><p align="right">中文 | <a href="en/">English</a></p>生成成功！<a href="http://t.cn/<?php echo $str1;?>" target="_blank">原网址</a>的长链接为：<br><p><input type="text" name="content" id="fe_text" placeholder="输入网址~" value="https://biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/<?php
 
 $strcount=strlen($str1);
 	
@@ -75,4 +107,4 @@ $final=str_replace('=','',$final);
 echo $final;
 
 
-?>" size="82"> <button id="d_clip_button" class="button grey large" data-clipboard-target="fe_text"><b>copy~</b></button><br><a href="index.html">再生成一个长链接</a></p><p align="right">by <a href="http://www.chenxublog.com/" target="_blank">晨旭</a></p></form></td></tr><ul class="bg-bubbles"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul></div></div></div><script src="jquery-2.1.1.min.js" type="text/javascript"></script><script>$("#login-button").click(function(e){e.preventDefault(),$("form").fadeOut(500),$(".wrapper").addClass("form-success")});</script><script type="text/javascript" src="ZeroClipboard.min.js"></script><script type="text/javascript">var clip=new ZeroClipboard(document.getElementById("d_clip_button"),{moviePath:"ZeroClipboard.swf"});clip.on("complete",function(){alert("复制成功~")});</script><script type="text/javascript" src="http://v3.jiathis.com/code_mini/jiathis_r.js?type=left&amp;move=0&amp;btn=l1.gif" charset="utf-8"></script><tr><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><div class="ds-thread" data-thread-key="1" data-title="长链接生成器" data-url="http://biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/index.html"></div><script type="text/javascript">var duoshuoQuery={short_name:"biubiubiubiubiubiu"};!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"==document.location.protocol?"https:":"http:")+"//static.duoshuo.com/embed.js",t.charset="UTF-8",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(t)}();</script></tr></body></html></html>
+?>" size="82"> <button id="d_clip_button" class="button grey large" data-clipboard-target="fe_text"><b>copy~</b></button>该网址的镜像镜像：<input type="text" value="http://biu.papapoi.com/mirror<?php echo $str1; ?>" size="82"><a href="index.html">再生成一个长链接</a></p><p align="right">by <a href="http://www.chenxublog.com/" target="_blank">晨旭</a></p></form></td></tr><ul class="bg-bubbles"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul></div></div></div><script src="jquery-2.1.1.min.js" type="text/javascript"></script><script>$("#login-button").click(function(e){e.preventDefault(),$("form").fadeOut(500),$(".wrapper").addClass("form-success")});</script><script type="text/javascript" src="ZeroClipboard.min.js"></script><script type="text/javascript">var clip=new ZeroClipboard(document.getElementById("d_clip_button"),{moviePath:"ZeroClipboard.swf"});clip.on("complete",function(){alert("复制成功~")});</script><script type="text/javascript" src="http://v3.jiathis.com/code_mini/jiathis_r.js?type=left&amp;move=0&amp;btn=l1.gif" charset="utf-8"></script><tr><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><div class="ds-thread" data-thread-key="1" data-title="长链接生成器" data-url="http://biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/index.html"></div><script type="text/javascript">var duoshuoQuery={short_name:"biubiubiubiubiubiu"};!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"==document.location.protocol?"https:":"http:")+"//static.duoshuo.com/embed.js",t.charset="UTF-8",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(t)}();</script></tr></body></html></html>
