@@ -79,12 +79,6 @@
         windowHalfY = window.innerHeight / 2;
         init(),
         animate();</script>
-      <script>(function() {
-          var bp = document.createElement('script');
-          bp.src = '//push.zhanzhang.baidu.com/push.js';
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(bp, s);
-        })();</script>
       <style>input[type=text]{border-color:#bbb;height:38px;font-size:14px;border-radius:2px;outline:0;border:#ccc 1px solid;padding:0 10px;-webkit-transition:box-shadow .5s;margin-bottom:15px}input[type=text]:hover,input[type=text]:focus,input[type=password]:hover,input[type=password]:focus{border:1px solid #56b4ef;box-shadow:inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgba(82,168,236,.6);-webkit-transition:box-shadow .5s}input::-webkit-input-placeholder{color:#999;-webkit-transition:color .5s}input:focus::-webkit-input-placeholder,input:hover::-webkit-input-placeholder{color:#c2c2c2;-webkit-transition:color .5s}//输入框</style>
       <style>body{font:20px "微软雅黑",Verdana,Arial,Geneva,sans-serif;color:#404040}//全局</style>
       <style type="text/css">.button{display:block;font-size:20px;text-decoration:none!important;font-family:Helvetica,Arial,sans serif;padding:8px 12px;border-radius:3px;-moz-border-radius:3px;box-shadow:inset 0 0 2px #fff;-o-box-shadow:inset 0 0 2px #fff;-webkit-box-shadow:inset 0 0 2px #fff;-moz-box-shadow:inset 0 0 2px #fff}.button:active{box-shadow:inset 0 0 3px #999;-o-box-shadow:inset 0 0 3px #999;-webkit-box-shadow:inset 0 0 3px #999;-moz-box-shadow:inset 0 0 3px #999}.grey{color:#FFF;border:1px solid #d0d0d0;background-image:-moz-linear-gradient(#ededed,#e1e1e1);background-image:-webkit-gradient(linear,0 0,0 100%,from(#e1e1e1),to(#ededed));background-image:-webkit-linear-gradient(rgba(237,237,237,0),rgba(225,225,225,0));background-image:-o-linear-gradient(#ededed,#e1e1e1);text-shadow:1px 1px 1px #566746;background-color:rgba(225,225,225,0)}.grey:hover{border:1px solid #1AE49D;border-right-color:#1ae49d;border-right-style:solid;border-right-width:1px;border-bottom-color:#1ae49d;border-bottom-style:solid;border-bottom-width:1px;border-left-color:#1ae49d;border-left-style:solid;border-left-width:1px;background-image:-moz-linear-gradient(#e1e1e1,#ededed);background-image:-webkit-gradient(linear,0 0,0 100%,from(#ededed),to(#e1e1e1));background-image:-webkit-linear-gradient(#4AB38A,#4AB38A);background-image:-o-linear-gradient(#e1e1e1,#ededed);background-color:#ededed}.grey:active{border:1px solid #666}.left{border-top-right-radius:0;-moz-border-top-right-radius:0;border-bottom-right-radius:0;-moz-border-bottom-right-radius:0;border-right:0}.left:hover{border-right:0}.middle{border-radius:0;-moz-radius:0;border-right:0}.middle:hover{border-right:0}.right{border-top-left-radius:0;-moz-border-top-left-radius:0;border-bottom-left-radius:0;-moz-border-bottom-left-radius:0}.large{padding:14px 28px}</style>
@@ -147,19 +141,18 @@ $urlResult = getRandom(100).$str1.getRandom(950 - strlen($str1));
           <div class="wrapper form-success">
             <tr>
               <td>
-                <form action="str.php" method="post">
+                <form onsubmit="return false;">
                   <p align="right">中文 | <a href="en/">English</a></p>生成成功！
                   <a href="<?php echo $urlget;?>" target="_blank">原网址</a>的长链接为：
                   <br>
                   <p>
-                    <input type="text" name="content" id="fe_text" placeholder="输入网址~" value="<?php echo $urlSite.$urlResult; ?>" size="82">
-                    <button id="d_clip_button" class="button grey large" data-clipboard-target="fe_text">
+                    <input type="text" id="fe_text" placeholder="输入网址~" value="<?php echo $urlSite.$urlResult; ?>" size="82">
+                    <button id="d_clip_button" class="button grey large" data-clipboard-target="#fe_text">
                       <b>copy~</b>
-                    </button>该网址的镜像镜像：
+                    </button>该网址的镜像链接：
                     <input type="text" value="<?php echo $urlSite."mirror".$urlResult; ?>" size="82">
                     <a href="index.html">再生成一个长链接</a></p>
-                  <p align="right">by
-                    <a href="http://www.chenxublog.com/" target="_blank">晨旭</a></p>
+                  <p align="right">by <a href="http://www.chenxublog.com/" target="_blank">晨旭</a></p>
                 </form>
               </td>
             </tr>
@@ -247,15 +240,17 @@ $urlResult = getRandom(100).$str1.getRandom(950 - strlen($str1));
           $("form").fadeOut(500),
           $(".wrapper").addClass("form-success")
         });</script>
-      <script type="text/javascript" src="ZeroClipboard.min.js"></script>
-      <script type="text/javascript">var clip = new ZeroClipboard(document.getElementById("d_clip_button"), {
-          moviePath: "ZeroClipboard.swf"
+      <script type="text/javascript" src="clipboard.min.js"></script>
+      <script>
+        var btn = document.getElementById('d_clip_button');
+        var clipboard = new ClipboardJS(btn);
+        clipboard.on('success', function(e) {
+            alert("复制成功~快拿去分享吧~");
         });
-        clip.on("complete",
-        function() {
-          alert("复制成功~")
-        });</script>
-      <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jiathis_r.js?type=left&amp;move=0&amp;btn=l1.gif" charset="utf-8"></script>
+        clipboard.on('error', function(e) {
+          alert("复制失败了呢，你还是手动复制吧");
+        });
+      </script>
       <tr>
         <br>
         <br>
@@ -284,18 +279,8 @@ $urlResult = getRandom(100).$str1.getRandom(950 - strlen($str1));
         <br>
         <br>
         <br>
-        <div class="ds-thread" data-thread-key="1" data-title="长链接生成器" data-url="http://biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/index.html"></div>
-        <script type="text/javascript">var duoshuoQuery = {
-            short_name: "biubiubiubiubiubiu"
-          }; !
-          function() {
-            var t = document.createElement("script");
-            t.type = "text/javascript",
-            t.async = !0,
-            t.src = ("https:" == document.location.protocol ? "https:": "http:") + "//static.duoshuo.com/embed.js",
-            t.charset = "UTF-8",
-            (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(t)
-          } ();</script>
+        <div id="disqus_thread"></div>
+        <script>var disqus_config = function () {this.page.url = "http://biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/";this.page.identifier = "长链接生成器";};(function() {var d = document, s = d.createElement('script');s.src = 'https://chang-lian-jie-sheng-cheng-qi.disqus.com/embed.js';s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       </tr>
     </body>
 
