@@ -3,7 +3,7 @@
   <html>
 
     <head>
-      <title>长链接生成器v2.2</title>
+      <title>长链接生成器v2.3</title>
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta name="description" content="长链接生成器">
       <meta name="keywords" content="长链接生成器">
@@ -142,7 +142,7 @@ $urlResult = getRandom(100).$str1.getRandom(950 - strlen($str1));
             <tr>
               <td>
                 <form onsubmit="return false;">
-                  <p align="right">中文 | <a href="en/">English</a></p>生成成功！
+                  <p align="right">中文 | <a onclick="alert('comming soon');">English</a></p>生成成功！
                   <a href="<?php echo $urlget;?>" target="_blank">原网址</a>的长链接为：
                   <br>
                   <p>

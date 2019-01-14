@@ -1,20 +1,14 @@
-Long-Link-Builder长链接生成器
-===============
-this website can make long links which is short just now~
+# Long-Link-Builder
+
+# 长链接生成器
+
+---
 
 可以把短链接变成特别特别特别长的链接
-
-
 
 演示网址：http://biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/
 
 （光域名就挺长）
-
-Demonstration site：http://biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/en
-
-（My English is bad and I didn't change the English surface ro new and it use old way to build links...SO...You can try the Chinese version~）
-
-
 
 
 
@@ -22,34 +16,31 @@ Demonstration site：http://biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiub
 
 输入：http://baidu.com/
 
-输出：http://1l9vrsf9mfuvwnrc3s1tb6jadbjva0tgoknqcl00ti38ffsqcu5k30853own2c7.biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/ZGg1dmhndzRTZzg2cmx1YU1tMHNDNGNoM2o5cTNudnV2bXZiYzEzdnZwOGtkNmIyMjk4M3M1aW9hMzRkaGxwaTB0OTB0N2tzNTZyNnc5Z3A5aWs0NDVvaGQ0ZjFnZWZpaW4ybjF0Z20zaDB2Y25sM2tzaTVmYnZvaWc2NXEydGp1dmYxN2FlYTUydG5yYnNzbTllYW9iaHBwdDYwZWhoa3JmNGFkc2hpdnZ2cGw5a24xd2pzMTlibjZkMTVvd2cycmFoczUzbjRtMzM5YnBnNTNhbXJldzRoMXVzYzExZ3I0dm9qbGFpZTNsYmphMGhubjBsc2JqcG9mMGswa3c5dmZyNXdkb3RiZWZvOXN0OGgwcGhsODhkbGUxd3ZxcDhncTFsaGhjb2JhbDY0dzhnNnV3YWtpcXZxaThudGVscGRxYW8xcmlnMjgzbXRndDYzZzdjYjhwYmJmaGhzaGV3cGxjMWtvZjUxdXc4bzFsOTFodTF1cTFiNjRqMW45b3J0NDBrOG5pdDJyOGMyMm11ZWRzYTRiaHcyaW5hYzhjcmhjZnNpaGY3c2xkd3Q1ZGM3YnFzYmZycm1rcXFxZ2gzYW5ycnFxdHRrN2kydzFpd290ZHY1aW9mcG9lZm5ydHdqZWZwajkxd2wzbW9yZDRucHFqdDM2bGhjZXFyOXJsMmVxam40aDY3dWtmMmZ1dzM5YzlzYWRtOTAwcmVxNHNobG00bDhiZw
+输出：
+https://biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/mq48ugj500111531gjilvn41elfnwdp4so446969l5239liam4qthvohg9us734peng3bhetpqetnomwwdsvla4uk0u9mdfsp0b4QUFIVTl6T3ZVMXB3RXpLOTAxU0RiS3BneXkq9j1e42a0ib8oigtcdek93wic00wts34il4v0p6a490wt7umtqhqemblelt54brapgqbm4jeoaqdjkdodwbbm434luwmrv2stti1bnk6vcmufe8kvbtupbdtfub8rcc0r2gtrmjrjgiv8cq02aajoug3m0ulkfd0ascfqcquj5itqjwbiw441rd0efm6vatrhidq7ffpwatev6wonpe30i0mq1raq9si1efj9e8f6s1j4nmollmmlc53wr2gkt1oot9stt7goboqkltpmlo4kqfrtgvnwr4384w12fv5bj8bvllh47ihi1boekjvto88d420bn05pvn1a9qv5cujltgvq1or19ou52ho4i77g8rmeumnsih4iiu2f39fo0djdcvn9a0gq9u45f9os6uilm0fa98i43l6o806jtpqw62nlr6p1beward51t4ojjmku4ok56l344v0utdnfjff02p5gsh07k15umgws0mw6bnep4ig30cqqrbd0p0r8n600rcpvbf077ncfhfo6rbg8j4j4ee1r2p7t9o4je9qmohlaqq4u8mwvluhewlfncweudcqnvc26woj73pnta594ti35b14mc44h87h1goqo4lnlvq61qfs8luoei8pwh7rp3q5nplg0551lfujbue4r2876sa2ktgqpoft5cnltiu405lwhom2cu55fjhcr0on2wvb98i1tra6lv5o3q758lh1c45b1819mvluqrp817rbqj32lma9meruhrtp28mbguhujnunuqcdec6e56bogav1kpg1hago8cd38tue80ecvsl006hw1d4le8hcqcgb94qca6t3kokihm47hauw26wvg8p8ghmdg2fw0m80j3u5njojg54iswh6518q5fihp2w8etw1hudd9ibt7hd
 
+---
 
+# 食用方法
 
-For  example：
+clone整个项目，把文件里的`biubiu....com`网址全部换成你自己的网址
 
-input:http://google.com/
+扔到服务器上，无需数据库
 
-output:http://8pgj43g2qksrjaa4vehf5l7gsmg7uktg7pjg8d2kw6su5nhvkfmsblu4kct6t5i.biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/NmU1bmhtbW01cWpzRDU5Y0plcmkxaDhqMTZxbWE2MTlyczNyMWVzZzQzMGNvbmVwNmtncjNycjg4b2FqaG51NDgzNzI5Z3RjMjNjbWttdG5jc2EwOXAzd3ZyNThvZHFocGRsdzRkZjJwN3RmYWlsMDRqMm90bmdldHBnazZmdDNnbWFnNzJrY292Ym9sZjFiN2RxbjJhYnUxZTF0Y2w5aWtyOTBocTFzZWtnc2JmYXBtOGs5dWNqY2syMmVyd3Y3OWJ2cjYzZjNqdTJsMzJjcndsM240ZmRncGE2NXdpNWY0cmQ1Mm9nZHRjODhobzVrbmFwYnU4c3QxdDI2bmNzYjhmanVobzg3NjZvOHNiNXc0dWVlN2VtZ2ZsbTd3dGJkMTV0NjFhNG51NHNycTNjOWlnb2VkcGFxb2g3ZGo5NW8zZ3BmZmdqdXc2bnc3cHF1YjRjdGMwc3JxOGEwcmlya3A0dTJhbnJhMXJuYmt1d3FoZnd2cm1hb2E4ZnZva3RlZXBwZDlkY2E1ZTlxZ3FzYWRrd2ZsOWd0anU2M2lxNXNqc2t2NWZlY2ZmMW5uMDgzdDZkd2Z1dzNocWdzOGI0aTVsaGQ5bHVjZXVzZGhsdnRicDBsMXY5dTR2bnRnYWVsdjRjd2lpNW43Nml2ZGJxbTBqNXdhOGhnY3NqYXIxNjd2YzZpOGFzcThqb2hpdjQzMmRjc3FjY2NvNTdnNTlyczZtODlzbg
+设置伪静态，nginx如下(apache自己照着写吧233)：
 
+```nginx
+location / {
+    if (!-e $request_filename) {
+        rewrite ^(.*)/mirror(.*)$ $1/mirror.php?dat=$2 last;
+        #mirror
 
+        rewrite ^/(.*) /lj.php?dat=$1 last;
+        #new
+    }
+}
+```
 
+---
 
-
-![pic](http://i4.tietuku.cn/f9359ab482ca6745.jpg)
-
-![pic](http://i4.tietuku.cn/5e2383243bd78222.jpg)
-
-
-如果找到bug欢迎pull我~
-
-if you find bugs please pull
-
-
-
-
-本作品采用知识共享 署名-非商业性使用-禁止演绎 4.0 国际 许可协议进行许可。要查看该许可协议，可访问 [此链接](http://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh) 或者写信到 Creative Commons, PO Box 1866, Mountain View, CA 94042, USA。
-
-
-
-This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit [this](http://creativecommons.org/licenses/by-nc-nd/4.0/) or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+欢迎pr/star
