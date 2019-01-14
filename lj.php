@@ -4,42 +4,28 @@ $b=$_GET['dat'];
 
 if($b=='')
 {
-	echo '<SCRIPT language=JavaScript>alert("链接格式错误！\nThe format of link is error!")</SCRIPT>';
+	echo '<script>alert("链接格式错误！\nThe format of link is error!")</script>';
 	echo '<meta http-equiv="refresh" content="0.1;url=index.html">';
 	return 0;
 }
+
+$deurl = base64_decode(substr($b,100));
+
+if(strpos($deurl,"*") ==false)//老链接或链接错误
+{
+	echo '<script>alert("抱歉，链接已失效\nsorry this url is nouse.")</script>';
+	echo '<meta http-equiv="refresh" content="0.1;url=index.html">';
+}
 else
 {
+    $deurl = strrev($deurl);//反转字符串
+    $deurl = substr($deurl,strpos($deurl,"*")+1);//还原字符串base64
+    $deurl = gzinflate(base64_decode($deurl));
 
-$b=base64_decode($b);
-
-$decodecount=$b[2];
-
-$decode='          ';
-
-for($x=0;$x<$decodecount;$x++){
-	$decode[$x]=$b[$x*4+4];
 }
 
-$decode='http://t.cn/'.$decode;
+$deurl = str_replace('"','',$deurl);;
 
-function  curl_post_302($url)
-{
-    $ch = curl_init();
-    curl_setopt($ch,  CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_URL,  $url);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch,  CURLOPT_FOLLOWLOCATION, 1); // 302 redirect
-    curl_setopt($ch,  CURLOPT_POSTFIELDS, "233");
-    $data = curl_exec($ch);
-    $Headers =  curl_getinfo($ch);
-    curl_close($ch);
-    if ($data != $Headers)
-    return  $Headers["url"];
-    else
-    return $url;
-}
-}
 ?>
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -179,7 +165,7 @@ function alertSet() {
     setInterval(function() {
         if (0 == t){
             document.getElementById("js-alert-btn").innerHTML = "点击前往该页面";
-            document.getElementById("js-alert-btn").href = "<?php echo $decode; ?>";
+            document.getElementById("js-alert-btn").href = "<?php echo $deurl; ?>";
         }else {
             t -= 1,
             document.getElementById("js-sec-text").innerHTML = t;

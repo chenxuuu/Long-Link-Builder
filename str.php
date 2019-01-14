@@ -104,7 +104,6 @@ if($urlget=='')
 
 //判断字符串的包含
 
-
 if(!strstr($urlget, 'http://'))
 {
     if(!strstr($urlget, 'https://'))
@@ -114,76 +113,38 @@ if(!strstr($urlget, 'http://'))
 }
 
 
-function  curl_post_302($url)
+$str1 = base64_encode(gzdeflate($urlget));
+
+$str1 = strrev($str1);
+
+$str1 = str_replace('=','',$str1);
+
+$str1 = base64_encode($str1."*");
+
+if(strlen($str1) >= 850) //长度超过最大
 {
-    $ch = curl_init();
-    curl_setopt($ch,  CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_URL,  $url);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch,  CURLOPT_FOLLOWLOCATION, 1); // 302 redirect
-    curl_setopt($ch,  CURLOPT_POSTFIELDS, "233");
-    $data = curl_exec($ch);
-    $Headers =  curl_getinfo($ch);
-    curl_close($ch);
-    if ($data != $Headers)
-    return  $Headers["url"];
-    else
-    return $url;
+  echo '<SCRIPT language=JavaScript>alert("网址过长，生成失败！")</SCRIPT>';
+  echo '<meta http-equiv="refresh" content="0.1;url=index.html">';
+  return 0;
 }
 
-$safe_check = file_get_contents("http://cgi.urlsec.qq.com/index.php?m=check&a=check&url=".curl_post_302($urlget));
-
-if(strstr($safe_check, "\u60a8\u8981\u8bbf\u95ee\u7684\u7f51\u7ad9\u88ab\u5927\u91cf\u7528\u6237\u4e3e\u62a5"))
-{
-    echo '<SCRIPT language=JavaScript>alert("请填写安全的网址！")</SCRIPT>';
-    echo '<meta http-equiv="refresh" content="0.1;url=index.html">';
-    return 0;
-}
-
-function shorturl($long_url){
-    $apiKey='3738750665';//要修改这里的key再测试哦
-    $apiUrl='http://api.t.sina.com.cn/short_url/shorten.json?source='.$apiKey.'&url_long='.$long_url;
-    $response = file_get_contents($apiUrl);
-    $json = json_decode($response);
-    return $json[0]->url_short;
-}
-
-function expandurl($short_url){
-    $apiKey='3738750665';//要修改这里的key再测试哦
-    $apiUrl='http://api.t.sina.com.cn/short_url/expand.json?source='.$apiKey.'&url_short='.$short_url;
-
-    $response = file_get_contents($apiUrl);
-    $json = json_decode($response);
-    return $json[0]->url_long;
-}
-if(strstr($urlget, 'http://t.cn/'))
-{
-    $str1=$urlget;
-}else
-{
-    $str1=shorturl($urlget);
-}
-
-if($str1=='')
-{
-    echo '<SCRIPT language=JavaScript>alert("请填写正确的网址！")</SCRIPT>';
-    echo '<meta http-equiv="refresh" content="0.1;url=index.html">';
-    return 0;
-}
-
-function getRandom($param){
+function getRandom($param,$nostar){
     $str="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     $key = "";
     for($i=0;$i<$param;$i++)
      {
          $key .= $str{mt_rand(0,32)};    //生成php随机数
      }
+     if($nostar && strpos(base64_decode($key),"*") !==false)
+     {
+      return getRandom($param,true);
+     }
      return $key;
 }
 
-$ranstr1=getRandom(150);
-$ranstr2=getRandom(800);
-$str1=str_replace('http://t.cn/','',$str1);
+$urlSite = "https://biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/";
+$urlResult = getRandom(100,false).$str1.getRandom(950 - strlen($str1),true);
+
 ?>
       <div align="center">
         <div class="htmleaf-container">
@@ -192,24 +153,14 @@ $str1=str_replace('http://t.cn/','',$str1);
               <td>
                 <form action="str.php" method="post">
                   <p align="right">中文 | <a href="en/">English</a></p>生成成功！
-                  <a href="http://t.cn/<?php echo $str1;?>" target="_blank">原网址</a>的长链接为：
+                  <a href="<?php echo $urlget;?>" target="_blank">原网址</a>的长链接为：
                   <br>
                   <p>
-                    <input type="text" name="content" id="fe_text" placeholder="输入网址~" value="https://biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/<?php
-                    $strcount=strlen($str1);
-                    for($x=0;$x<$strcount;$x++){
-                    $ranstr1[$x*4+4]=$str1[$x];
-                    }
-                    $ranstr1[2]=$strcount;
-                    $final=$ranstr1.$ranstr2;
-                    $final=base64_encode($final);
-                    $final=str_replace('=','',$final);
-                    echo $final;
-                    ?>" size="82">
+                    <input type="text" name="content" id="fe_text" placeholder="输入网址~" value="<?php echo $urlSite.$urlResult; ?>" size="82">
                     <button id="d_clip_button" class="button grey large" data-clipboard-target="fe_text">
                       <b>copy~</b>
                     </button>该网址的镜像镜像：
-                    <input type="text" value="http://biu.papapoi.com/mirror<?php echo $str1; ?>" size="82">
+                    <input type="text" value="<?php echo $urlSite."mirror".$urlResult; ?>" size="82">
                     <a href="index.html">再生成一个长链接</a></p>
                   <p align="right">by
                     <a href="http://www.chenxublog.com/" target="_blank">晨旭</a></p>
