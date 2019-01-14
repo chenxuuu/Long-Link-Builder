@@ -19,12 +19,12 @@ if(strpos($deurl,"*") ==false)//老链接或链接错误
 else
 {
     $deurl = strrev($deurl);//反转字符串
-    $deurl = substr($deurl,strpos($deurl,"*")+1);//还原字符串base64
+    $deurl = substr($deurl,strripos($deurl,"*")+1);//还原字符串base64
     $deurl = gzinflate(base64_decode($deurl));
 
 }
 
-$deurl = str_replace('"','',$deurl);;
+$deurl = str_replace('"','',$deurl);
 
 ?>
 <!DOCTYPE html>

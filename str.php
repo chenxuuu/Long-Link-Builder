@@ -128,22 +128,18 @@ if(strlen($str1) >= 850) //长度超过最大
   return 0;
 }
 
-function getRandom($param,$nostar){
+function getRandom($param){
     $str="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     $key = "";
     for($i=0;$i<$param;$i++)
      {
          $key .= $str{mt_rand(0,32)};    //生成php随机数
      }
-     if($nostar && strpos(base64_decode($key),"*") !==false)
-     {
-      return getRandom($param,true);
-     }
      return $key;
 }
 
 $urlSite = "https://biubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiubiu.com/";
-$urlResult = getRandom(100,false).$str1.getRandom(950 - strlen($str1),true);
+$urlResult = getRandom(100).$str1.getRandom(950 - strlen($str1));
 
 ?>
       <div align="center">
