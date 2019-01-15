@@ -139,10 +139,10 @@ body {
     <div class="alert-body">
         <div id="js-alert-head" class="alert-head">等待前往目标页面</div>
         <div class="alert-concent">
-            <p>您需要等待十秒钟前往目标页面</p>
+            <p>十秒后自动跳转到目标页面</p>
             <p>本站<b>不保证</b>其的真实性与合法性</p>
         </div>
-        <a id="js-alert-btn" class="alert-btn" href="#">请等待倒计时完毕</a>
+        <a id="js-alert-btn" class="alert-btn" href="<?php echo $deurl; ?>">我已明白，立即前往该页面</a>
     </div>
     <div class="alert-footer clearfix">
         <svg width="46px" height="42px" class="alert-footer-icon">
@@ -164,8 +164,7 @@ function alertSet() {
     document.getElementById("js-sec-text").innerHTML = t,
     setInterval(function() {
         if (0 == t){
-            document.getElementById("js-alert-btn").innerHTML = "点击前往该页面";
-            document.getElementById("js-alert-btn").href = "<?php echo $deurl; ?>";
+            location.href = '<?php echo $deurl; ?>';
         }else {
             t -= 1,
             document.getElementById("js-sec-text").innerHTML = t;
